@@ -22,6 +22,8 @@ typedef struct s_stack
 	t_s64	cap;
 }	t_stack;
 
+/* Globals are supposedly bad but I'm a gangsta */
+
 extern t_stack	g_a;
 extern t_stack	g_b;
 
