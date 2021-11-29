@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soumanso <soumanso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,20 +12,6 @@
 
 #include "push_swap.h"
 
-static t_int	top(t_stack *stack)
+void	qsort(void)
 {
-	ft_assert (stack->count != 0, "Stack is empty.");
-	return (stack->data[stack->count - 1]);
-}
-
-void	sort(void)
-{
-	while (g_a.count)
-	{
-		ra ();
-		while (g_b.count && top (&g_b) > g_a.data[0])
-			pa ();
-		rra ();
-		pb ();
-	}
 }

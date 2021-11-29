@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+static void	stack_swap(t_stack *stack)
+{
+	t_int	tmp;
+
+	if (stack->count < 2)
+		return ;
+	tmp = stack->data[stack->count - 1];
+	stack->data[stack->count - 1] = stack->data[stack->count - 2];
+	stack->data[stack->count - 2] = tmp;
+}
+
 void	sa(void)
 {
 	ft_println ("sa");

@@ -28,10 +28,9 @@ extern t_stack	g_a;
 extern t_stack	g_b;
 
 t_bool	init_stack(t_stack *stack, t_s64 cap);
-void	stack_swap(t_stack *stack);
-void	stack_push(t_stack *src, t_stack *dst);
-void	stack_rotate(t_stack *stack);
-void	stack_rev_rotate(t_stack *stack);
+t_int	at(t_stack *stack, t_s64 index);
+t_int	bottom(t_stack *stack);
+t_int	top(t_stack *stack);
 
 void	sa(void);
 void	sb(void);
@@ -44,6 +43,6 @@ void	rr(void);
 void	rra(void);
 void	rrb(void);
 void	rrr(void);
-void	sort(void);
+void	qsort(void);
 
 #endif

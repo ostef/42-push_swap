@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+static void	stack_rev_rotate(t_stack *stack)
+{
+	t_int	tmp;
+	t_s64	i;
+
+	if (stack->count < 2)
+		return ;
+	tmp = stack->data[0];
+	i = 0;
+	while (i < stack->count - 1)
+	{
+		stack->data[i] = stack->data[i + 1];
+		i += 1;
+	}
+	stack->data[stack->count - 1] = tmp;
+}
+
 void	rra(void)
 {
 	ft_println ("rra");

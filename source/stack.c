@@ -26,58 +26,20 @@ t_bool	init_stack(t_stack *stack, t_s64 cap)
 	return (TRUE);
 }
 
-void	stack_swap(t_stack *stack)
+t_int	at(t_stack *stack, t_s64 index)
 {
-	t_int	tmp;
-
-	if (stack->count < 2)
-		return ;
-	tmp = stack->data[stack->count - 1];
-	stack->data[stack->count - 1] = stack->data[stack->count - 2];
-	stack->data[stack->count - 2] = tmp;
+	ft_assert (stack->count > 0, "Stack is empty.");
+	ft_assert (index >= 0 && index < stack->count,
+		"Invalid index (got %i, max is %i).", index, stack->count - 1);
+	return (stack->data[index]);
 }
 
-void	stack_push(t_stack *src, t_stack *dst)
+t_int	bottom(t_stack *stack)
 {
-	ft_assert (dst->count < dst->cap, "Cannot push more elements.");
-	if (src->count > 0)
-	{
-		src->count -= 1;
-		dst->data[dst->count] = src->data[src->count];
-		dst->count += 1;
-	}
+	return at (stack, 0);
 }
 
-void	stack_rotate(t_stack *stack)
+t_int	top(t_stack *stack)
 {
-	t_int	tmp;
-	t_s64	i;
-
-	if (stack->count < 2)
-		return ;
-	tmp = stack->data[stack->count - 1];
-	i = stack->count - 2;
-	while (i >= 0)
-	{
-		stack->data[i + 1] = stack->data[i];
-		i -= 1;
-	}
-	stack->data[0] = tmp;
-}
-
-void	stack_rev_rotate(t_stack *stack)
-{
-	t_int	tmp;
-	t_s64	i;
-
-	if (stack->count < 2)
-		return ;
-	tmp = stack->data[0];
-	i = 0;
-	while (i < stack->count - 1)
-	{
-		stack->data[i] = stack->data[i + 1];
-		i += 1;
-	}
-	stack->data[stack->count - 1] = tmp;
+	return at (stack, stack->count - 1);
 }
