@@ -27,10 +27,12 @@ void	pa(void)
 {
 	ft_println ("pa");
 	stack_push (&g_b, &g_a);
+	g_op_count += 1;
 }
 
 void	pb(void)
 {
 	ft_println ("pb");
 	stack_push (&g_a, &g_b);
+	g_op_count += 1;
 }

@@ -33,12 +33,14 @@ void	ra(void)
 {
 	ft_println ("ra");
 	stack_rotate (&g_a);
+	g_op_count += 1;
 }
 
 void	rb(void)
 {
 	ft_println ("rb");
 	stack_rotate (&g_b);
+	g_op_count += 1;
 }
 
 void	rr(void)
@@ -46,4 +48,5 @@ void	rr(void)
 	ft_println ("rr");
 	stack_rotate (&g_a);
 	stack_rotate (&g_b);
+	g_op_count += 1;
 }

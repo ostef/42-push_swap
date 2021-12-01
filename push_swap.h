@@ -26,11 +26,15 @@ typedef struct s_stack
 
 extern t_stack	g_a;
 extern t_stack	g_b;
+extern t_s64	g_op_count;
 
 t_bool	init_stack(t_stack *stack, t_s64 cap);
 t_int	at(t_stack *stack, t_s64 index);
 t_int	bottom(t_stack *stack);
 t_int	top(t_stack *stack);
+
+t_bool	is_sorted(t_stack *stack);
+void	print_stacks(void);
 
 void	sa(void);
 void	sb(void);
@@ -43,6 +47,6 @@ void	rr(void);
 void	rra(void);
 void	rrb(void);
 void	rrr(void);
-void	qsort(void);
+void	sort(void);
 
 #endif

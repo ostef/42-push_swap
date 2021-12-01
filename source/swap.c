@@ -27,12 +27,14 @@ void	sa(void)
 {
 	ft_println ("sa");
 	stack_swap (&g_a);
+	g_op_count += 1;
 }
 
 void	sb(void)
 {
 	ft_println ("sb");
 	stack_swap (&g_b);
+	g_op_count += 1;
 }
 
 void	ss(void)
@@ -40,4 +42,5 @@ void	ss(void)
 	ft_println ("ss");
 	stack_swap (&g_a);
 	stack_swap (&g_b);
+	g_op_count += 1;
 }

@@ -15,6 +15,7 @@
 
 t_stack	g_a;
 t_stack	g_b;
+t_s64	g_op_count;
 
 static t_bool	parse_args(t_str *args, t_int count)
 {
@@ -44,21 +45,21 @@ static t_bool	parse_args(t_str *args, t_int count)
 	return (TRUE);
 }
 
-static t_bool	is_sorted(void)
+t_bool	is_sorted(t_stack *stack)
 {
 	t_s64	i;
 
 	i = 0;
-	while (i < g_a.count - 1)
+	while (i < stack->count - 1)
 	{
-		if (g_a.data[i] > g_a.data[i + 1])
+		if (at (stack, i) > at (stack, i + 1))
 			return (FALSE);
 		i += 1;
 	}
 	return (TRUE);
 }
 
-static void	print_stacks(void)
+void	print_stacks(void)
 {
 	t_s64	i;
 
@@ -79,25 +80,9 @@ static void	print_stacks(void)
 	ft_println ("| a |   | b |");
 }
 
-t_int	main(t_int argc, t_str *args)
+/*
+static void	user_command_loop(t_str *args, t_s64 argc)
 {
-	if (argc < 2)
-		return (0);
-	if (!init_stack (&g_a, argc - 1))
-	{
-		ft_fprintln (STDERR, "Error");
-		return (1);
-	}
-	if (!init_stack (&g_b, argc - 1))
-	{
-		ft_fprintln (STDERR, "Error");
-		return (1);
-	}
-	if (!parse_args (args + 1, argc - 1))
-	{
-		ft_fprintln (STDERR, "Error");
-		return (1);
-	}
 	print_stacks ();
 	char	op[100];
 	while (!is_sorted () || g_b.count > 0)
@@ -138,4 +123,27 @@ t_int	main(t_int argc, t_str *args)
 		}
 		print_stacks ();
 	}
+}
+*/
+
+t_int	main(t_int argc, t_str *args)
+{
+	if (argc < 2)
+		return (0);
+	if (!init_stack (&g_a, argc - 1))
+	{
+		ft_fprintln (STDERR, "Error");
+		return (1);
+	}
+	if (!init_stack (&g_b, argc - 1))
+	{
+		ft_fprintln (STDERR, "Error");
+		return (1);
+	}
+	if (!parse_args (args + 1, argc - 1))
+	{
+		ft_fprintln (STDERR, "Error");
+		return (1);
+	}
+	sort ();
 }

@@ -36,10 +36,10 @@ t_int	at(t_stack *stack, t_s64 index)
 
 t_int	bottom(t_stack *stack)
 {
-	return at (stack, 0);
+	return (at (stack, 0));
 }
 
 t_int	top(t_stack *stack)
 {
-	return at (stack, stack->count - 1);
+	return (at (stack, stack->count - 1));
 }
