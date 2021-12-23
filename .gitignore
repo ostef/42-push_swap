@@ -1,5 +1,7 @@
 push_swap
+test
 *.o
 *.out
 *.a
+benchmark
 .vscode/

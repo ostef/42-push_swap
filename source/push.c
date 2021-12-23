@@ -5,34 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soumanso <soumanso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 19:09:02 by soumanso          #+#    #+#             */
-/*   Updated: 2021/11/28 19:09:02 by soumanso         ###   ########lyon.fr   */
+/*   Created: 2021/12/23 14:03:58 by soumanso          #+#    #+#             */
+/*   Updated: 2021/12/23 14:03:58 by soumanso         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	stack_push(t_stack *src, t_stack *dst)
+void	pa(t_data *data)
 {
-	if (src->count > 0)
-	{
-		ft_assert (dst->count < dst->cap, "Cannot push more elements.");
-		src->count -= 1;
-		dst->data[dst->count] = src->data[src->count];
-		dst->count += 1;
-	}
-}
-
-void	pa(void)
-{
+	ft_assert (data->b.count > 0, "pa: Stack B is empty.");
+	data->b.count -= 1;
+	data->a.data[data->a.count] = data->b.data[data->b.count];
+	data->a.count += 1;
+	data->op_count += 1;
 	ft_println ("pa");
-	stack_push (&g_b, &g_a);
-	g_op_count += 1;
 }
 
-void	pb(void)
+void	pb(t_data *data)
 {
+	ft_assert (data->a.count > 0, "pb: Stack A is empty.");
+	data->a.count -= 1;
+	data->b.data[data->b.count] = data->a.data[data->a.count];
+	data->b.count += 1;
+	data->op_count += 1;
 	ft_println ("pb");
-	stack_push (&g_a, &g_b);
-	g_op_count += 1;
 }
