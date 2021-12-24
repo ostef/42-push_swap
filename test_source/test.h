@@ -19,6 +19,6 @@ t_s64	random(void);
 t_u64	urandom(void);
 t_s64	random_range(t_s64 min, t_s64 max);
 void	random_fill(t_data *data, t_int max);
-void	benchmark(t_int chunk_count, t_int count, t_file out_file);
+void	benchmark(t_int count, t_file out_file);
 
 #endif

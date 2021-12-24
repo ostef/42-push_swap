@@ -56,40 +56,55 @@ static t_file	open_file_for_writing(t_cstr filename)
 	return (result);
 }
 
-t_int	main(t_int argc, t_str *args)
+static t_int	test_random(t_str *args, t_int argc)
 {
 	t_data	data;
 	t_int	count;
 
-	if (argc < 2)
+	if (argc < 1)
+	{
+		ft_fprintln (STDERR, "Usage: test --random elem_count");
 		return (1);
-	ft_str_to_int (args[1], &count);
+	}
+	ft_str_to_int (args[0], &count);
 	ft_memset (&data, 0, sizeof (t_data));
 	random_fill (&data, count);
 	sort (&data);
-	ft_println ("Chunk count was %i.", data.chunk_count);
 	return (0);
 }
 
-/*
-t_int	main(t_int argc, t_str *args)
+static t_int	test_benchmark(t_str *args, t_int argc)
 {
-	t_int	chunk;
-	t_int	max_chunk;
 	t_int	count;
 	t_file	out_file;
 
-	if (argc < 4)
+	if (argc < 2)
+	{
+		ft_fprintln (STDERR, "Usage: test --benchmark count out_filename");
 		return (1);
-	ft_str_to_int (args[1], &count);
-	ft_str_to_int (args[2], &max_chunk);
-	out_file = open_file_for_writing (args[3]);
+	}
+	ft_str_to_int (args[0], &count);
+	out_file = open_file_for_writing (args[1]);
 	if (out_file < 0)
 		return (1);
-	chunk = 1;
-	while (chunk <= max_chunk)
-		benchmark (chunk++, count, out_file);
+	benchmark (count, out_file);
 	close (out_file);
 	return (0);
 }
-*/
+
+t_int	main(t_int argc, t_str *args)
+{
+	if (argc < 2)
+	{
+		ft_fprintln (STDERR, "Usage: test action args");
+		ft_fprintln (STDERR, "Example:");
+		ft_fprintln (STDERR, "       test --random elem_count");
+		ft_fprintln (STDERR, "       test --benchmark count out_filename");
+		return (1);
+	}
+	if (ft_strequ (args[1], "--random"))
+		return (test_random (args + 2, argc - 2));
+	else if (ft_strequ (args[1], "--benchmark"))
+		return (test_benchmark (args + 2, argc - 2));
+	return (0);
+}

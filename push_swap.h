@@ -41,9 +41,12 @@ typedef enum e_result
 	OK = 0,
 	ALLOCATION_FAILURE = 1,
 	NOT_AN_INTEGER = 2,
-	DUPLICATE_VALUES = 3
+	DUPLICATE_VALUES = 3,
+	INT_VALUE_OUTSIDE_BOUNDS = 4
 }	t_result;
 
+void		skip_spaces(t_cstr *str);
+t_result	parse_int(t_cstr *str, t_int *out);
 t_result	parse_args(t_data *data, t_str *args, t_int argc);
 t_result	fill_stack(t_data *data, t_int *ints, t_int count);
 void		print_error(t_result error);

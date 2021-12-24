@@ -48,11 +48,13 @@ void	sort(t_data *data)
 {
 	t_int	chunk;
 
-	chunk = 0;
+	if (is_sorted (&data->a))
+		return ;
 	if (data->a.count <= 30)
 		sort_small (data);
 	else
 	{
+		chunk = 0;
 		while (data->a.count > 0)
 			chunk = push_next_elem_to_b (data, chunk);
 		while (data->b.count > 0)

@@ -1,7 +1,7 @@
 push_swap
 test
+checker_linux
 *.o
 *.out
 *.a
-benchmark
 .vscode/

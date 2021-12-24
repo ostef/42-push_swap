@@ -16,7 +16,8 @@ static t_cstr	g_error_strs[] = {
 	"OK.",
 	"Allocation failure.",
 	"Non integer value.",
-	"Duplicate values."
+	"Duplicate values.",
+	"Integer value is outside the bounds [INT_MIN;INT_MAX]."
 };
 
 void	print_error(t_result error)

@@ -45,13 +45,12 @@ static void	benchmark_once(t_data *data, t_int index,
 	}
 }
 
-static void	print_results(t_bench *benchs, t_int chunk_count, t_int count,
+static void	print_results(t_bench *benchs, t_int count,
 	t_file out_file)
 {
 	t_int	i;
 
 	i = 0;
-	ft_fprintln (out_file, "======= chunk_count = %i =======", chunk_count);
 	ft_fprintln (out_file, "Benchmarked %i times.", count);
 	while (i < 500)
 	{
@@ -60,8 +59,7 @@ static void	print_results(t_bench *benchs, t_int chunk_count, t_int count,
 			i += 1;
 			continue ;
 		}
-		ft_fprint (out_file, "For %3i elements, %2i chunks: ",
-			i + 1, chunk_count);
+		ft_fprint (out_file, "For %3i elements: ", i + 1);
 		ft_fprint (out_file, "%5i min, ", (t_int)benchs[i].min_ops);
 		ft_fprint (out_file, "%5i max, ", (t_int)benchs[i].max_ops);
 		dprintf (out_file, "%f avg.\n", benchs[i].total / (t_f32)count);
@@ -69,14 +67,12 @@ static void	print_results(t_bench *benchs, t_int chunk_count, t_int count,
 	}
 }
 
-void	benchmark(t_int chunk_count, t_int count, t_file out_file)
+void	benchmark(t_int count, t_file out_file)
 {
 	t_data	data;
 	t_bench	benchs[500];
 	t_int	i;
-	t_int	j;
 
-	data.chunk_count = chunk_count;
 	i = 0;
 	while (i < 500)
 	{
@@ -93,5 +89,5 @@ void	benchmark(t_int chunk_count, t_int count, t_file out_file)
 		benchmark_once (&data, i, count, benchs);
 		i += 1;
 	}
-	print_results (benchs, chunk_count, count, out_file);
+	print_results (benchs, count, out_file);
 }
